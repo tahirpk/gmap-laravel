@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Address;
-use App\Http\resources\Address as AddressResource;
+use App\Http\Resources\Address as AddressResource;
 class AddressController extends Controller
 {
 
