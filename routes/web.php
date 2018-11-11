@@ -21,6 +21,7 @@ Route::post('/mapshow', 'MapgController@show_map');
 Route::get('/addresses',function(){
 	return view('addresses.index');
 });
+Route::post('search','MapgController@search');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

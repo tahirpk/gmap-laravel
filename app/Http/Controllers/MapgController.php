@@ -15,9 +15,7 @@ class MapgController extends Controller
     public function index()
     {
     	
-	    $response = \GoogleMaps::load('geocoding')
-			->setParam (['address' =>'santa cruz'])
-	 		->get();
+	   
 	  
  		$addresses= Address::orderBy('id','DESC')->paginate(6);
         return view('gmap',['addresses'=>$addresses]); 
@@ -44,5 +42,12 @@ class MapgController extends Controller
    
        
       return $lat_lng;
+    }
+
+    public function search(Request $request)
+    {
+        $search=$request->get('search');
+        $addresses=Address::where('address','like','%'.$search.'%')->paginate(6);
+        return view('gmap',['addresses'=>$addresses]);
     }
 }
