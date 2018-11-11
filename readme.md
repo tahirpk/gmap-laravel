@@ -21,7 +21,8 @@ Admin CRUD with vue js :
 - Listing with pagination for All admin addresses.
 - Right Panel show the all Address and Left Panel will show the Google-map when user clicke at (show map).
 - Right Panel show the all Address and Left Panel will show the Google-map.
-
+- Default [http://gmap.dvapp/ ] , you need to change: [http://gmap.dvapp/gmap]
+- you can Search addresses.
 
 ## Contributing
 
