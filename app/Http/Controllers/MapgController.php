@@ -21,6 +21,35 @@ class MapgController extends Controller
         return view('gmap',['addresses'=>$addresses]); 
     }
 
+
+    public function mindex()
+    {
+             
+        $addresses= Address::select('address','status')->where('status','Active')->orderBy('id','DESC')->paginate(6);
+       
+        foreach($addresses as $key=>$obj)
+        {
+            $response = \GoogleMaps::load('geocoding')
+            ->setParam (['address' =>$obj->address])
+            ->get();
+            
+            $data_map=json_decode($response);
+            $data_map=$data_map->results;
+                        
+            if(!empty($data_map)) 
+            {
+                $address = explode(',', $data_map[0]->formatted_address);
+                $data_map = $data_map[0]->geometry->location;
+                $lat_lng=$data_map->lat.','.$data_map->lng;
+                $locations[]=[$address[0],$data_map->lat,$data_map->lng];
+
+            }          
+            
+        }
+       
+        return view('welcome',['addresses'=>$addresses,'locations'=>json_encode($locations)]); 
+    }
+
     /**
      * Display the specified resource.
      *

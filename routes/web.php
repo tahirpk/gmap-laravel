@@ -11,10 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-
-    return view('welcome');
-});
+Route::get('/', 'MapgController@mindex');
 
 Route::get('/gmap', 'MapgController@index');
 Route::post('/mapshow', 'MapgController@show_map');
