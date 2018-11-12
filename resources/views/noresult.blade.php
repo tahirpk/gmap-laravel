@@ -101,67 +101,22 @@
                     
                 </div>
             </form>
+            <p>
+                <center>No Result Found</center>
+                <br>
+                <a href="/" class="btn btn-info">Go Back</a>
+            </p>
             </div> 
             </div>
-            <div class="row justify-content-center" id="sdv">
-            <div class="col-md-8">
-
-            @foreach($addresses as $address)
             
-            <div class="card mb-2 mr-2 list-item">
-                <div class="card-header">
-                    Status: {{ $address->status}}</div>
-
-                <div class="card-body">
-                   {{ $address->address}}
-                  
-                </div>
-            </div>
-            
-            @endforeach
-           
-            </div>
-                <input type="hidden" id="zoom_data" value="8">
-                <input type="hidden" id="clocations" value="{{ $locations }}">
-
-                <div class="col-md-4" id="gmap">
-                    <div id="map">
-                    </div>
-                </div>
                 
-            <div class="col"> 
-            <center>{{ $addresses->links() }}</center>
-            </div>
+            
             </div>
         
     </main>
     </div>
     <div id="app">
     </div>
-    <script>
-    function search() { alert(99);
-        $.ajaxSetup({
-        headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-        });
-        var search_text = $('#search').val();
-        $.ajax({
-            type: 'post',
-            url: 'search',
-            data: {
-                  'search': search_text
-            },
-            success: function(data) {
-                $('#sdv').html('');
-                
-                
-                console.log(data);
-            }
-        });
-    }
-
     
-</script>
     </body>
 </html>

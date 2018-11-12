@@ -76,7 +76,47 @@ class MapgController extends Controller
     public function search(Request $request)
     {
         $search=$request->get('search');
-        $addresses=Address::where('address','like','%'.$search.'%')->paginate(6);
+        $addresses=Address::where('address','like','%'.$search.'%')->paginate(6); 
         return view('gmap',['addresses'=>$addresses]);
+    }
+
+    public function searchAjax(Request $request)
+    {
+        $search=$request->get('search');
+        $addresses=Address::where('status','Active')->where('address','like','%'.$search.'%')->paginate(6);
+
+        if(count($addresses)>0)
+        {
+             
+        foreach($addresses as $key=>$obj)
+        {
+            $response = \GoogleMaps::load('geocoding')
+            ->setParam (['address' =>$obj->address])
+            ->get();
+            
+            $data_map=json_decode($response);
+            $data_map=$data_map->results;
+                       
+            if(!empty($data_map)) 
+            {
+                $address = explode(',', $data_map[0]->formatted_address);
+                $data_map = $data_map[0]->geometry->location;
+                $lat_lng=$data_map->lat.','.$data_map->lng;
+                $locations[]=[$address[0],$data_map->lat,$data_map->lng];
+
+            }          
+            
+        }  
+            //return json_encode(['addresses'=>$addresses,'locations'=>$locations]);
+         return view('welcome',['addresses'=>$addresses,'locations'=>json_encode($locations)]); 
+        }
+        else{
+            //return redirect('/');
+            return view('noresult');
+        }
+        
+       
+        
+        
     }
 }
