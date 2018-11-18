@@ -47,10 +47,10 @@ class AddressController extends Controller
      */
     public function store(Request $request)
     {
-        echo($request->get('country').'tested'.$request->get('address'));
+        
     
         $country = DB::table('countries')->select('id','name')->where('id',$request->get('country'))->get();//Country::find($request->get('country'));
-         die('count'.$country);
+         die('country:'.$country->name);
         $state = State::find($request->get('state'));
         $city = City::find($request->get('city'));
         print_r($country);
