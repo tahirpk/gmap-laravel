@@ -52,8 +52,9 @@ class AddressController extends Controller
         $country = Country::find($request->get('country'));
         $state = State::find($request->get('state'));
         $city = City::find($request->get('city'));
-        
-        dd($country.'::City::'.$city);
+        print_r($country);
+        die('::City::');
+
         $address = new Address;
         $address->address = $request->get('address');
         $address->country = $country->name;
