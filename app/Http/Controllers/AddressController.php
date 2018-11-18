@@ -8,7 +8,7 @@ use App\country;
 use App\State;
 use App\City;
 use App\Http\Resources\Address as AddressResource;
-use App\Http\Resources\City as CityResource;
+
 class AddressController extends Controller
 {
 
@@ -47,8 +47,8 @@ class AddressController extends Controller
      */
     public function store(Request $request)
     {
-
-     die($request->get('country'));
+        print_r($request.'tested'.$request->get('address'));
+     die();
         $country = Country::find($request->get('country'));
         $state = State::find($request->get('state'));
         $city = City::find($request->get('city'));
