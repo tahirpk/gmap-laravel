@@ -50,7 +50,7 @@ class AddressController extends Controller
         
     
         $country = DB::table('countries')->select('id','name')->where('id',$request->get('country'))->get();//Country::find($request->get('country'));
-         die('country:'.$country->name);
+         die('country:'.$country[0]->name);
         $state = State::find($request->get('state'));
         $city = City::find($request->get('city'));
         print_r($country);
