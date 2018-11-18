@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 14);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -70,7 +70,7 @@
 "use strict";
 
 
-var bind = __webpack_require__(6);
+var bind = __webpack_require__(7);
 var isBuffer = __webpack_require__(21);
 
 /*global toString:true*/
@@ -424,10 +424,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(8);
+    adapter = __webpack_require__(9);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(8);
+    adapter = __webpack_require__(9);
   }
   return adapter;
 }
@@ -502,7 +502,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ }),
 /* 3 */
@@ -13492,6 +13492,12 @@ return jQuery;
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
+module.exports = __webpack_require__(20);
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 
 
@@ -13507,7 +13513,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -13697,7 +13703,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13708,7 +13714,7 @@ var settle = __webpack_require__(24);
 var buildURL = __webpack_require__(26);
 var parseHeaders = __webpack_require__(27);
 var isURLSameOrigin = __webpack_require__(28);
-var createError = __webpack_require__(9);
+var createError = __webpack_require__(10);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(29);
 
 module.exports = function xhrAdapter(config) {
@@ -13884,7 +13890,7 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13909,7 +13915,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13921,7 +13927,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13947,7 +13953,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -14056,17 +14062,23 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(14);
-module.exports = __webpack_require__(52);
-
-
-/***/ }),
 /* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
+__webpack_require__(15);
+module.exports = __webpack_require__(53);
+
+
+/***/ }),
+/* 15 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_dependon__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_dependon___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_dependon__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -14074,10 +14086,15 @@ module.exports = __webpack_require__(52);
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-__webpack_require__(15);
+__webpack_require__(16);
 
 window.Vue = __webpack_require__(38);
 window.swal = __webpack_require__(40);
+
+
+Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_dependon___default.a);
+
+Vue.use(__WEBPACK_IMPORTED_MODULE_1_axios___default.a);
 
 /**
  * The following block of code may be used to automatically register your
@@ -14087,8 +14104,8 @@ window.swal = __webpack_require__(40);
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-Vue.component('example-component', __webpack_require__(41));
-Vue.component('addresses', __webpack_require__(44));
+Vue.component('example-component', __webpack_require__(42));
+Vue.component('addresses', __webpack_require__(45));
 
 // const files = require.context('./', true, /\.vue$/i)
 
@@ -14107,11 +14124,11 @@ var app = new Vue({
 });
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-window._ = __webpack_require__(16);
+window._ = __webpack_require__(17);
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -14123,7 +14140,7 @@ try {
   window.Popper = __webpack_require__(4).default;
   window.$ = window.jQuery = __webpack_require__(5);
 
-  __webpack_require__(18);
+  __webpack_require__(19);
 } catch (e) {}
 
 /**
@@ -14132,7 +14149,7 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = __webpack_require__(19);
+window.axios = __webpack_require__(6);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -14168,7 +14185,7 @@ if (token) {
 // });
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -31280,10 +31297,10 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(17)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(18)(module)))
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -31311,7 +31328,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -35261,12 +35278,6 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(20);
-
-/***/ }),
 /* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -35274,7 +35285,7 @@ module.exports = __webpack_require__(20);
 
 
 var utils = __webpack_require__(0);
-var bind = __webpack_require__(6);
+var bind = __webpack_require__(7);
 var Axios = __webpack_require__(22);
 var defaults = __webpack_require__(2);
 
@@ -35309,9 +35320,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(11);
+axios.Cancel = __webpack_require__(12);
 axios.CancelToken = __webpack_require__(36);
-axios.isCancel = __webpack_require__(10);
+axios.isCancel = __webpack_require__(11);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -35464,7 +35475,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 "use strict";
 
 
-var createError = __webpack_require__(9);
+var createError = __webpack_require__(10);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -35897,7 +35908,7 @@ module.exports = InterceptorManager;
 
 var utils = __webpack_require__(0);
 var transformData = __webpack_require__(33);
-var isCancel = __webpack_require__(10);
+var isCancel = __webpack_require__(11);
 var defaults = __webpack_require__(2);
 var isAbsoluteURL = __webpack_require__(34);
 var combineURLs = __webpack_require__(35);
@@ -36057,7 +36068,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 "use strict";
 
 
-var Cancel = __webpack_require__(11);
+var Cancel = __webpack_require__(12);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -47305,7 +47316,7 @@ module.exports = Vue;
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(8)))
 
 /***/ }),
 /* 40 */
@@ -47318,12 +47329,143 @@ module.exports = Vue;
 /* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
+;(function () {
+
+    var vueDependOn = {};
+
+    var helpers = {
+        capitalize: function (string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+    };
+
+    function loadOptions(vm, data, parent, child) {
+        // First, let's find the index of the selected parent in the data list.
+        var index = 0;
+        for (var i = 0; i < vm[data].length; i++) {
+            if (vm[data][i][parent] === vm['selected' + helpers.capitalize(parent)])
+                index = i;
+        };
+        
+        // Second, put all child options in the `loaded+[child]` variable,
+        // so you can use it to filter through the current loaded options.
+        vm['loaded' + helpers.capitalize(child) + 'Options'] = vm[data][index][child];
+
+        // Finally, we need to check if the child select input is also a parent for another child input.
+        // If it is, we set its value in the `selected+[child]` variable, which is also being watched by
+        // the $watch method. And because we change it here, the watcher gets triggered, so its children
+        // get loaded.
+        if (vm['selected' + helpers.capitalize(child)]) {
+            vm['selected' + helpers.capitalize(child)] = vm['loaded' + helpers.capitalize(child) + 'Options'][0];
+        }
+    }
+
+    vueDependOn.install = function (Vue) {
+        Vue.directive('dependon', {
+            bind: function () {
+                var vm = this.vm;
+                var data = this.expression.split('.')[0];
+                var parent = this.expression.split('.')[1];
+                var child = this.el.id;
+                var async = this.modifiers.async;
+
+                if (async) {
+                    // Empty the data list, because the user has
+                    // chosen it to be asynchronous
+                    vm[data] = [];
+                    setTimeout(function () {
+                        if (! vm[data].length) {
+                            throw new Error('[vue-dependon] timeout exceeded: asynchronous loading of "' + data + '"');
+                        }
+                    }, 5000);
+                } else {
+                    start();
+                }
+
+
+                vm.$watch(data, function () {
+                    start();
+                });
+
+                function start () {
+                    // Turn off warnings (because we're using vm.$set)
+                    Vue.config.silent = true;
+
+                    /*** Some checks before we proceed. ***/
+                    
+                    if (!vm[data]) {
+                        throw new Error('[vue-dependon] the data "' + data + '" is not defined in your vm instance.');
+                    }
+
+                    if (!vm[data].length) {
+                        throw new Error('[vue-dependon] the data "' + data + '" is empty.');
+                    }
+
+                    for (var i = 0; i < vm[data].length; i++) {
+                        if (!vm[data][i][parent]) {
+                            throw new Error('[vue-dependon] there is no parent named "' + parent + '" in "' + data + '"');
+                        }
+
+                        if (!vm[data][i][child]) {
+                            throw new Error('[vue-dependon] there is no child named "' + child + '" in "' + data + '"');
+                        }
+                    };
+
+                    /*** Alright, everything seems fine! Let's keep on ***/
+
+                    var selectedParent = 'selected' + helpers.capitalize(parent);
+                    var loadedChild = 'loaded' + helpers.capitalize(child) + 'Options';
+
+                    // Set the selected parent and the loaded child options on the current vm.
+                    // selectedParent is what we use on the parent select input using v-model.
+                    // loadedChild is what we use on the child select input when filtering options using v-for.
+                    vm.$set(selectedParent, '');
+                    vm.$set(loadedChild, []);
+
+                    /**
+                     * When the parent select input changes (another option is chosen),
+                     * reload all options in the child select input.
+                     */
+                    vm.$watch(selectedParent, function (newVal, oldVal) {
+                        loadOptions(vm, data, parent, child);
+                    });
+
+                    // In the beginning the first option of the parent select input should be selected.
+                    // Which also means, we need to load its child options.
+                    vm[selectedParent] = vm[data][0][parent];
+                    loadOptions(vm, data, parent, child);
+
+
+                    // Turn on warnings
+                    Vue.config.silent = false;
+                }
+            }
+        })
+    }
+
+    if (true) {
+        module.exports = vueDependOn;
+    } else if (typeof define == "function" && define.amd) {
+        define([], function(){ return vueDependOn });
+    } else if (window.Vue) {
+        window.VueDependOn = vueDependOn;
+        Vue.use(vueDependOn);
+    }
+
+})();
+
+
+
+/***/ }),
+/* 42 */
+/***/ (function(module, exports, __webpack_require__) {
+
 var disposed = false
-var normalizeComponent = __webpack_require__(12)
+var normalizeComponent = __webpack_require__(13)
 /* script */
-var __vue_script__ = __webpack_require__(42)
+var __vue_script__ = __webpack_require__(43)
 /* template */
-var __vue_template__ = __webpack_require__(43)
+var __vue_template__ = __webpack_require__(44)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -47362,7 +47504,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47391,7 +47533,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -47434,19 +47576,19 @@ if (false) {
 }
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(45)
+  __webpack_require__(46)
 }
-var normalizeComponent = __webpack_require__(12)
+var normalizeComponent = __webpack_require__(13)
 /* script */
-var __vue_script__ = __webpack_require__(50)
+var __vue_script__ = __webpack_require__(51)
 /* template */
-var __vue_template__ = __webpack_require__(51)
+var __vue_template__ = __webpack_require__(52)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -47485,17 +47627,17 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(46);
+var content = __webpack_require__(47);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(48)("0ba4202c", content, false, {});
+var update = __webpack_require__(49)("0ba4202c", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -47511,21 +47653,21 @@ if(false) {
 }
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(47)(false);
+exports = module.exports = __webpack_require__(48)(false);
 // imports
 
 
 // module
-exports.push([module.i, "\n.list-item{\n    width: 220px;\n    padding-top: 2px;\n    height: 200px;\n    float: left;\n}\n", ""]);
+exports.push([module.i, "\n.list-item{\n    width: 220px;\n    padding-top: 2px;\n    height: 220px;\n    float: left;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports) {
 
 /*
@@ -47607,7 +47749,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -47626,7 +47768,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(49)
+var listToStyles = __webpack_require__(50)
 
 /*
 type StyleObject = {
@@ -47835,7 +47977,7 @@ function applyToTag (styleElement, obj) {
 
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports) {
 
 /**
@@ -47868,11 +48010,40 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -47929,31 +48100,119 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             address: {
                 id: '',
                 address: '',
-                status: ''
+                status: '',
+                country: '',
+                state: '',
+                city: ''
 
             },
+            country: 0,
+            countries: '',
+            state: 0,
+            states: '',
+            city: 0,
+            cities: '',
             add: true,
             edit: false
         };
     },
     created: function created() {
         this.viewAddress();
+        this.getCountry();
     },
 
     methods: {
-        viewAddress: function viewAddress() {
+
+        getCountry: function getCountry() {
             var _this = this;
+
+            fetch('api/country').then(function (res) {
+                return res.json();
+            }).then(function (res) {
+                _this.countries = res.data;
+                // Empty state and city
+
+                _this.states = '';
+                _this.cities = '';
+                _this.state = 0;
+                _this.city = 0;
+            }).catch(function (err) {
+                return console.log(err);
+            });
+        },
+        getCountryStates: function getCountryStates(event) {
+            var _this2 = this;
+
+            fetch('api/state/' + this.country).then(function (res) {
+                return res.json();
+            }).then(function (res) {
+                _this2.states = res.data;
+
+                _this2.state = 0;
+                _this2.address.country = _this2.country;
+
+                // Empty city
+                _this2.cities = '';
+                _this2.city = 0;
+            }).catch(function (err) {
+                return console.log(err);
+            });
+        },
+
+        getStateCities: function getStateCities() {
+            var _this3 = this;
+
+            fetch('api/city/' + this.state).then(function (res) {
+                return res.json();
+            }).then(function (res) {
+                _this3.cities = res.data;
+
+                _this3.address.state = _this3.state;
+                console.log(event.target.value);
+                _this3.address.city = _this3.$refs.city;
+                _this3.city = 0;
+            }).catch(function (err) {
+                return console.log(err);
+            });
+
+            /* axios.get('api/city', { 
+               params: {
+                       state: this.state
+               }
+             }) 
+             .then(function (response) {
+               this.cities = response.data;
+               this.city = 0;
+             })*/
+        },
+
+        getCities: function getCities() {
+            var _this4 = this;
+
+            fetch('api/city/' + this.city).then(function (res) {
+                return res.json();
+            }).then(function (res) {
+
+                _this4.address.city = _this4.city;
+            }).catch(function (err) {
+                return console.log(err);
+            });
+        },
+
+        viewAddress: function viewAddress() {
+            var _this5 = this;
 
             fetch('api/addresses').then(function (res) {
                 return res.json();
             }).then(function (res) {
-                _this.addresses = res.data;
+                _this5.addresses = res.data;
+                console.log(_this5.addresses);
             }).catch(function (err) {
                 return console.log(err);
             });
         },
         addAddress: function addAddress() {
-            var _this2 = this;
+            var _this6 = this;
 
             fetch('api/addresses', {
                 method: 'post',
@@ -47965,16 +48224,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return res.json();
             }).then(function (data) {
                 swal("Successfull!", "Address added", "success");
-                _this2.address.address = '';
-                _this2.address.status = '';
+                _this6.address.country = '';
+                _this6.address.city = '';
+                _this6.address.state = '';
+                _this6.address.address = '';
+                _this6.address.status = '';
 
-                _this2.viewAddress();
+                _this6.viewAddress();
             }).catch(function (err) {
                 swal("Failed!", "Address fail to update", "error");
             });
         },
         updateAddress: function updateAddress(id) {
-            var _this3 = this;
+            var _this7 = this;
 
             fetch('api/addresses/' + id, {
                 method: 'put',
@@ -47987,11 +48249,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).then(function (data) {
                 console.log(data);
                 swal("Successfull!", "Address Updated", "success");
-                _this3.add = true;
-                _this3.edit = false;
-                _this3.address.address = '';
-                _this3.address.status = '';
-                _this3.viewAddress();
+                _this7.add = true;
+                _this7.edit = false;
+                _this7.address.country = '';
+                _this7.address.city = '';
+                _this7.address.state = '';
+                _this7.address.address = '';
+                _this7.address.status = '';
+                _this7.viewAddress();
             }).catch(function (err) {
                 swal("Failed!", "Address fail to update", "error");
             });
@@ -48000,11 +48265,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.add = false;
             this.edit = true;
             this.address.id = pro.id;
+            this.address.country = pro.country;
+            this.address.city = pro.city;
+            this.address.state = pro.state;
             this.address.address = pro.address;
             this.address.status = pro.status;
         },
         delAddress: function delAddress(id) {
-            var _this4 = this;
+            var _this8 = this;
 
             swal({
                 title: "Are you sure!",
@@ -48020,7 +48288,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         return res.json();
                     }).then(function (data) {
                         swal("Successfull!", "Address deleted", "success");
-                        _this4.viewAddress();
+                        _this8.viewAddress();
                     }).catch(function (err) {
                         swal("Failed!", "Address fail to delete", "error");
                     });
@@ -48034,7 +48302,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -48062,6 +48330,12 @@ var render = function() {
                 _vm._v(
                   "\n                   " +
                     _vm._s(address.address) +
+                    "," +
+                    _vm._s(address.city) +
+                    "," +
+                    _vm._s(address.state) +
+                    " ," +
+                    _vm._s(address.country) +
                     "\n                  \n                    "
                 ),
                 _c("p", { staticClass: "text-right mt-2" }, [
@@ -48099,6 +48373,162 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "col-md-4" }, [
         _c("form", [
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "country" } }, [_vm._v("Country")]),
+            _vm._v(" "),
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.country,
+                    expression: "country"
+                  }
+                ],
+                staticClass: "custom-select form-control",
+                attrs: { name: "country", id: "country" },
+                on: {
+                  change: [
+                    function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.country = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    },
+                    function($event) {
+                      _vm.getCountryStates($event)
+                    }
+                  ]
+                }
+              },
+              [
+                _c("option", { attrs: { value: "0" } }, [
+                  _vm._v("Select Country")
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.countries, function(data) {
+                  return _c("option", { domProps: { value: data.id } }, [
+                    _vm._v(_vm._s(data.name))
+                  ])
+                })
+              ],
+              2
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "state" } }, [_vm._v("State")]),
+            _vm._v(" "),
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.state,
+                    expression: "state"
+                  }
+                ],
+                staticClass: "custom-select form-control",
+                attrs: { name: "state", id: "state" },
+                on: {
+                  change: [
+                    function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.state = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    },
+                    function($event) {
+                      _vm.getStateCities($event)
+                    }
+                  ]
+                }
+              },
+              [
+                _c("option", { attrs: { value: "0" } }, [
+                  _vm._v("Select State")
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.states, function(data) {
+                  return _c("option", { domProps: { value: data.id } }, [
+                    _vm._v(_vm._s(data.name))
+                  ])
+                })
+              ],
+              2
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "city" } }, [_vm._v("City")]),
+            _vm._v(" "),
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.city,
+                    expression: "city"
+                  }
+                ],
+                staticClass: "custom-select form-control",
+                attrs: { name: "city", id: "city" },
+                on: {
+                  change: [
+                    function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.city = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    },
+                    function($event) {
+                      _vm.getCities()
+                    }
+                  ]
+                }
+              },
+              [
+                _c("option", { attrs: { value: "0" } }, [
+                  _vm._v("Select City")
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.cities, function(data) {
+                  return _c("option", { domProps: { value: data.id } }, [
+                    _vm._v(_vm._s(data.name))
+                  ])
+                })
+              ],
+              2
+            )
+          ]),
+          _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
             _c("label", { attrs: { for: "address" } }, [_vm._v("Address")]),
             _vm._v(" "),
@@ -48220,7 +48650,7 @@ if (false) {
 }
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

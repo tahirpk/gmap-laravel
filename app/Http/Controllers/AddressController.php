@@ -1,10 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Address;
+use App\country;
+use App\State;
+use App\City;
 use App\Http\Resources\Address as AddressResource;
+use App\Http\Resources\City as CityResource;
 class AddressController extends Controller
 {
 
@@ -22,7 +26,7 @@ class AddressController extends Controller
      */
     public function index()
     {
-        return AddressResource::collection(Address::orderBy('id','DESC')->paginate(6));
+        return $data = AddressResource::collection(Address::orderBy('id','DESC')->paginate(6));
     }
 
     /**
@@ -43,8 +47,18 @@ class AddressController extends Controller
      */
     public function store(Request $request)
     {
+     
+        $country = Country::find($request->get('country'));
+        $state = State::find($request->get('state'));
+        $city = City::find($request->get('city'));
         
-        $address= Address::create($request->all());
+        $address = new Address;
+        $address->address = $request->get('address');
+        $address->country = $country->name;
+        $address->city = $city->name;
+        $address->state = $state->name;
+        $address->status = $request->get('status');
+        $address->save(); //Address::create($request->all());
       
         return new AddressResource($address);
     }
@@ -98,5 +112,20 @@ class AddressController extends Controller
          $address =Address::find($id);
          $address->delete();
          return new AddressResource($address);
+    }
+
+
+     /**
+     * Display a City of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function cities($id)
+    {
+
+         //$state=$request->get('state');
+        //return CityResource::collection(City::where('state_id',$state));
+         $cities = DB::table('cities')->select('id','name')->where('state_id',$id)->get(); 
+          return ['data' => $cities];
     }
 }

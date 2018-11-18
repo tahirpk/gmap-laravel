@@ -18,4 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('addresses','AddressController');
+Route::get('country','CountryController@countries');
+Route::get('state/{id}','StateController@states');
+Route::get('city/{id}','AddressController@cities');
 

@@ -8,7 +8,13 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-window.swal=require('sweetalert');
+window.swal = require('sweetalert');
+
+import VueDependOn from 'vue-dependon'
+Vue.use(VueDependOn)
+import axios from 'axios'
+Vue.use(axios)
+
 
 /**
  * The following block of code may be used to automatically register your

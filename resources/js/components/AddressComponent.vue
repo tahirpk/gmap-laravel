@@ -6,7 +6,7 @@
                     <div class="card-header">Status:: {{ address.status }}       </div>
 
                     <div class="card-body">
-                       {{ address.address }}
+                       {{ address.address }},{{ address.city }},{{ address.state }} ,{{ address.country }}
                       
                         <p class="text-right mt-2">
                             <button @click="editAddress(address)" class="btn btn-info">Edit</button>
@@ -17,10 +17,39 @@
             </div>
             <div class="col-md-4">
                 <form>
+                    
+
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                            <select name="country" id="country" v-model='country' @change='getCountryStates($event)' class="custom-select form-control">
+                            <option value='0' >Select Country</option>
+                            <option v-for='data in countries' :value='data.id'>{{ data.name }}</option>
+                            </select>                        
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="state">State</label>
+                        <select name="state" id="state" v-model='state' @change='getStateCities($event)' class="custom-select form-control">
+                            <option value='0' >Select State</option>
+                            <option v-for='data in states' :value='data.id'>{{ data.name }}</option>
+                            </select>                     
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <select @change='getCities()' name="city" id="city" v-model='city' class="custom-select form-control">
+                        <option value='0' >Select City</option>
+                        <option v-for='data in cities' :value='data.id'>{{ data.name }}</option>
+                        </select>                        
+                    </div>
+
                     <div class="form-group">
                         <label for="address">Address</label>
                         <input type="text" name="address" class="form-control" v-model="address.address">                        
                     </div>
+
+                    
                     <div class="form-group">
                         <label for="status">Status</label>
                         <select id="status" name="status" class="custom-select form-control" v-model="address.status">
@@ -42,7 +71,7 @@
     .list-item{
         width: 220px;
         padding-top: 2px;
-        height: 200px;
+        height: 220px;
         float: left;
     }
 </style>
@@ -55,9 +84,18 @@
                     id:'',
                     address:'',
                     status:'',
+                    country:'',
+                    state:'',
+                    city:'',
                     
                    
                 },
+                country: 0,
+                countries: '',
+                state: 0,
+                states: '',
+                city:0,
+                cities: '',
                 add:true,
                 edit:false,
             }
@@ -65,14 +103,88 @@
         },
         created(){
                 this.viewAddress();
+                this.getCountry();
         },
         methods:{
+
+           getCountry: function(){
+
+         fetch('api/country')
+                .then(res => res.json())
+                .then(res =>{
+                    this.countries =res.data
+                         // Empty state and city
+                 
+                 this.states = ''
+                 this.cities = ''
+                 this.state = 0
+                 this.city = 0
+                })
+                .catch(err =>console.log(err))
+        
+
+    },
+    getCountryStates: function(event){
+
+        fetch(`api/state/${this.country}`)
+                .then(res => res.json())
+                .then(res =>{
+                    this.states =res.data
+                       
+                this.state = 0
+                this.address.country=this.country
+
+                // Empty city
+                this.cities = ''
+                this.city = 0;
+                })
+                .catch(err =>console.log(err))
+ 
+    }, 
+
+     getStateCities: function(){
+
+        fetch(`api/city/${this.state}`)
+                .then(res => res.json())
+                .then(res =>{
+                    this.cities =res.data
+                
+                this.address.state=this.state
+                console.log(event.target.value) 
+                this.address.city=this.$refs.city
+                this.city = 0;
+                })
+                .catch(err =>console.log(err))
+
+     /* axios.get('api/city', { 
+        params: {
+                state: this.state
+        }
+      }) 
+      .then(function (response) {
+        this.cities = response.data;
+        this.city = 0;
+      })*/
+    },
+
+     getCities: function(){
+
+        fetch(`api/city/${this.city}`)
+                .then(res => res.json())
+                .then(res =>{
+                                    
+                        this.address.city=this.city
+                 })
+                .catch(err =>console.log(err))
+    },
+
 
             viewAddress(){
                 fetch('api/addresses')
                 .then(res => res.json())
                 .then(res =>{
                     this.addresses =res.data
+                    console.log(this.addresses)
                 })
                 .catch(err =>console.log(err))
 
@@ -88,6 +200,9 @@
                 .then(res => res.json())
                 .then(data =>{
                     swal("Successfull!","Address added","success")
+                    this.address.country=''
+                    this.address.city=''
+                    this.address.state=''
                     this.address.address=''
                     this.address.status=''
                     
@@ -112,6 +227,9 @@
                     swal("Successfull!","Address Updated","success")
                     this.add=true
                     this.edit=false
+                    this.address.country=''
+                    this.address.city=''
+                    this.address.state=''
                     this.address.address=''
                     this.address.status=''
                     this.viewAddress()
@@ -125,6 +243,9 @@
                 this.add=false
                 this.edit=true
                 this.address.id=pro.id
+                this.address.country=pro.country
+                this.address.city=pro.city
+                this.address.state=pro.state
                 this.address.address=pro.address
                 this.address.status=pro.status
                 
