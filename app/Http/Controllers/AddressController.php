@@ -49,7 +49,7 @@ class AddressController extends Controller
     {
         echo($request->get('country').'tested'.$request->get('address'));
     
-        $country = Country::find($request->get('country'));
+        $country = DB::table('countries')->select('id','name')->where('state_id',$id)->get();//Country::find($request->get('country'));
          die('count'.$country);
         $state = State::find($request->get('state'));
         $city = City::find($request->get('city'));
