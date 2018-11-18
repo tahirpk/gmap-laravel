@@ -49,18 +49,20 @@ class AddressController extends Controller
     {
         
     
-        $country = DB::table('countries')->select('id','name')->where('id',$request->get('country'))->get();//Country::find($request->get('country'));
-         die('country:'.$country[0]->name);
-        $state = State::find($request->get('state'));
-        $city = City::find($request->get('city'));
-        print_r($country);
-        die('::City::');
-
+        $country = DB::table('countries')->select('id','name')->where('id',$request->get('country'))->get();
+        $state = DB::table('states')->select('id','name')->where('id',$request->get('state'))->get();
+        $city = DB::table('cities')->select('id','name')->where('id',$request->get('city'))->get();
+        /*
+            only this work at window installed server; xammp, wamp etc
+            $country=Country::find($request->get('country'));
+            $state = State::find($request->get('state'));
+            $city = City::find($request->get('city'));
+        */
         $address = new Address;
         $address->address = $request->get('address');
-        $address->country = $country->name;
-        $address->city = $city->name;
-        $address->state = $state->name;
+        $address->country = $country[0]->name;
+        $address->city = $city[0]->name;
+        $address->state = $state[0]->name;
         $address->status = $request->get('status');
         $address->save(); //Address::create($request->all());
       
