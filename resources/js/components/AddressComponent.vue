@@ -172,8 +172,7 @@
         fetch(`api/city/${this.city}`)
                 .then(res => res.json())
                 .then(res =>{
-                                    
-                        this.address.city=this.city
+                    this.address.city=this.city
                  })
                 .catch(err =>console.log(err))
     },

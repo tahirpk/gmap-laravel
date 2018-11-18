@@ -48192,7 +48192,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             fetch('api/city/' + this.city).then(function (res) {
                 return res.json();
             }).then(function (res) {
-
                 _this4.address.city = _this4.city;
             }).catch(function (err) {
                 return console.log(err);
