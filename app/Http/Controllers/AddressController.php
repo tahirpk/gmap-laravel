@@ -47,7 +47,7 @@ class AddressController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        dd($request->get('country').'state::'.$request->get('state'));
      
         $country = Country::find($request->get('country'));
         $state = State::find($request->get('state'));
