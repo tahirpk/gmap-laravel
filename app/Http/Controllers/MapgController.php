@@ -25,7 +25,7 @@ class MapgController extends Controller
     public function mindex()
     {
              
-        $addresses= Address::select('address','status')->where('status','Active')->orderBy('id','DESC')->paginate(6);
+        $addresses= Address::select('city','country','address','status')->where('status','Active')->orderBy('id','DESC')->paginate(6);
        
         foreach($addresses as $key=>$obj)
         {
@@ -76,14 +76,21 @@ class MapgController extends Controller
     public function search(Request $request)
     {
         $search=$request->get('search');
-        $addresses=Address::where('address','like','%'.$search.'%')->paginate(6); 
+        $addresses=Address::where('address','like','%'.$search.'%')
+                            ->orWhere('city','like','%'.$search.'%')
+                            ->orWhere('country','like','%'.$search.'%')
+                            ->paginate(6); 
         return view('gmap',['addresses'=>$addresses]);
     }
 
     public function searchAjax(Request $request)
     {
         $search=$request->get('search');
-        $addresses=Address::where('status','Active')->where('address','like','%'.$search.'%')->paginate(6);
+        $addresses=Address::where('status','Active')
+                    ->where('address','like','%'.$search.'%')
+                    ->orWhere('city','like','%'.$search.'%')
+                    ->orWhere('country','like','%'.$search.'%')
+                    ->paginate(6);
 
         if(count($addresses)>0)
         {

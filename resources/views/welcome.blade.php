@@ -113,7 +113,11 @@
                     Status: {{ $address->status}}</div>
 
                 <div class="card-body">
-                   {{ $address->address}}
+                   @if($address->city!='' && $address->country!='' )
+                   {{ $address->address .','. $address->city .','. $address->country }}
+                   @else
+                   {{ $address->address }}
+                   @endif
                   
                 </div>
             </div>
