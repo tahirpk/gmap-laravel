@@ -54,7 +54,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('addresses') }}">
+                                    <a class="dropdown-item" href="{{ url('addresses') }}">
                                       Add Address
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
